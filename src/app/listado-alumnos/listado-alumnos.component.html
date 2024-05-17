@@ -1,20 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AlumnoService } from '../alumno.service';
-
-@Component({
-  selector: 'app-alumno-detalles',
-  templateUrl: './alumno-detalles.component.html',
-  styleUrls: ['./alumno-detalles.component.css']
-})
-export class AlumnoDetallesComponent implements OnInit {
-  alumno: any;
-
-  constructor(private route: ActivatedRoute, private alumnoService: AlumnoService) { }
-
-  ngOnInit(): void {
-    const matricula = this.route.snapshot.paramMap.get('matricula');
-    this.alumno = this.alumnoService.getAlumnoById(matricula);
-  }
-}
-
+<div class="container mt-5">
+    <h2>Detalles del Alumno</h2>
+    <form *ngIf="alumno">
+      <div class="form-group">
+        <label for="nombreAlumno">Nombre:</label>
+        <input type="text" class="form-control" id="nombreAlumno" [value]="alumno.nombre" readonly>
+      </div>
+      <div class="form-group">
+        <label for="matriculaAlumno">Matrícula:</label>
+        <input type="text" class="form-control" id="matriculaAlumno" [value]="alumno.matricula" readonly>
+      </div>
+      <div class="form-group">
+        <label for="semestreAlumno">Semestre:</label>
+        <input type="text" class="form-control" id="semestreAlumno" [value]="alumno.semestre" readonly>
+      </div>
+      <div class="form-group">
+        <label for="empresaAlumno">Empresa:</label>
+        <input type="text" class="form-control" id="empresaAlumno" [value]="alumno.empresa" readonly>
+      </div>
+      <div class="form-group">
+        <label for="horasAcumuladas">Horas Acumuladas:</label>
+        <input type="text" class="form-control" id="horasAcumuladas" [value]="alumno.horasAcumuladas" readonly>
+      </div>
+      <button type="button" class="btn btn-primary btn-salir">Salir</button>
+    </form>
+  </div>
+  
